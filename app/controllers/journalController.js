@@ -1,16 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
+const Entry = require('../models/Entry')
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const { content, date, metadata} = req.body;
 
-    res.json({ message: 'Journal entry created successfully' });
+    try {
+        const entry = new Entry({
+            content,
+            date,
+            metadata
+        });
+
+        await entry.save();
+
+        res.json({ entry });
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ message: 'Server error' })
+    }
 });
 
-router.get('/', (req,res) => {
+router.get('/', async (req,res) => {
+    try {
+        const entries = await Entry.find();
 
-    res.json({ entries });
+        res.json({ entries });
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ message: 'Server error' });
+    }
 });
 
 module.exports = router;
