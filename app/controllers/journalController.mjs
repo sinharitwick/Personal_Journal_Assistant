@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const Entry = require('../models/Entry')
+import { Router } from 'express';
+import Entry from '../models/Entry.mjs';
+const router = Router();
 
 router.post('/', async (req, res) => {
     const { content, date, metadata} = req.body;
@@ -23,13 +23,14 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req,res) => {
     try {
+
         const entries = await Entry.find();
 
-        res.json({ entries });
+        res.json({ entries});
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-module.exports = router;
+export default router;

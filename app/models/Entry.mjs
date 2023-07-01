@@ -1,13 +1,12 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const entrySchema = new mongoose.Schema({
+const entrySchema = new Schema({
     content: {
         type: String,
         required: true
     },
     date: {
         type: Date,
-        required: true,
         default: Date.now
     },
     metadata: {
@@ -16,6 +15,4 @@ const entrySchema = new mongoose.Schema({
     }
 });
 
-const Entry = mongoose.model('Entry', entrySchema);
-
-module.exports = Entry;
+export default model('Entry', entrySchema);
