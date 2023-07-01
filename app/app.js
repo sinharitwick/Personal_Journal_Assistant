@@ -1,8 +1,17 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
+const db = require('./database');
+const bodyParser = require('body-parser');
+const journalController = require('./controllers/journalController');
+const dotenv = require('dotenv');
+dotenv.config();
 
+
+app.use(express.json());
 app.use(bodyParser.json());
+
+app.use('/entry', journalController);
+
+db.connectToDatabase();
 
 module.exports = app;
