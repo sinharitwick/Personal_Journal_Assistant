@@ -70,9 +70,9 @@ router.get('/currentUser', asyncHandler(async (req, res) => {
     res.json(req.user);
 }));
 
-const logoutUser = asyncHandler(async (req, res) => {
+router.get('/logout', asyncHandler(async (req, res) => {
     res.clearCookie("token");
     res.status(200).json({message: 'logged out'});
-});
+}));
 
 export default router;

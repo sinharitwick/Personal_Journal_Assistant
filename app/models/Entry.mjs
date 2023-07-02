@@ -19,6 +19,11 @@ const entrySchema = new Schema({
     }],
     sentiment: {
         type: Object
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 });
 
