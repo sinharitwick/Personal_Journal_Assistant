@@ -25,10 +25,10 @@ The Personal Journal Assistant is a microservices-based application that helps u
 
 1. Clone the repository:
    ```shell
-   git clone https://github.com/your-username/personal-journal-assistant.git
+   git clone https://github.com/sinharitwick/Personal_Journal_Assistant.git
 2. Install the dependencies:
    ```shell
-   cd personal-journal-assistant
+   cd Personal_Journal_Assistant
    npm install
 3. Set up the environment variables:
    - Create a .env file in the root directory.
