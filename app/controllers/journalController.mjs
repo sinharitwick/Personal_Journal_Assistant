@@ -1,15 +1,19 @@
+import { pipeline } from '@xenova/transformers';
+let classifier = await pipeline('sentiment-analysis');
 import { Router } from 'express';
 import Entry from '../models/Entry.mjs';
 const router = Router();
 
 router.post('/', async (req, res) => {
-    const { content, date, metadata} = req.body;
-
+    const { content, date, metadata, goals } = req.body;
+    let sentiment = await classifier(content);
     try {
         const entry = new Entry({
             content,
             date,
-            metadata
+            metadata,
+            goals,
+            sentiment
         });
 
         await entry.save();

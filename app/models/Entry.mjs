@@ -12,6 +12,13 @@ const entrySchema = new Schema({
     metadata: {
         type: Object,
         required: true
+    },
+    goals: [{
+        title: String,
+        progress: Number
+    }],
+    sentiment: {
+        type: Object
     }
 });
 
