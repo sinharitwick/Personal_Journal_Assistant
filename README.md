@@ -1,4 +1,4 @@
-# Personal_Journal_Assistant
+# Personal Journal Assistant
 
 The Personal Journal Assistant is a microservices-based application that helps users manage their personal journal entries. It provides features to create, read, update, and delete journal entries. Additionally, it offers sentiment analysis of journal content using an AI-powered classifier. Along with that, it also has a prompt tool which enables users to give a prompt and in response, content is displayed which is again powered by AI.
 
@@ -64,6 +64,11 @@ The Personal Journal Assistant is a microservices-based application that helps u
     "email": "jarvis@gmail.com",
     "password": "howard"
   }
+- Response Body:
+  ```shell
+  {
+    "message": "successfully logged in"
+  }
 
 ### User Logout
 - Endpoint: GET https://journai.vercel.app/api/logout
@@ -80,21 +85,21 @@ The Personal Journal Assistant is a microservices-based application that helps u
 - Request Body:
   ```shell
   {
-  "content": "I had a productive day!",
-  "date": "2023-07-01",
-  "metadata": {
-    "location": "Home"
-  },
-  "goals": [
-    {
-      "title": "Exercise more",
-      "progress": 50
-    },
-    {
-      "title": "Read a book",
-      "progress": 25
-    }
-  ]
+     "content": "I had a productive day!",
+     "date": "2023-07-01",
+     "metadata": {
+       "location": "Home"
+     },
+     "goals": [
+       {
+         "title": "Exercise more",
+         "progress": 50
+       },
+       {
+         "title": "Read a book",
+         "progress": 25
+       }
+     ]
   }
 
 ### Retrieve journal entries
@@ -108,21 +113,21 @@ The Personal Journal Assistant is a microservices-based application that helps u
 - Request Body:
   ```shell
   {
-  "content": "I had an amazing day!",
-  "date": "2023-07-01",
-  "metadata": {
-    "location": "Home"
-  },
-  "goals": [
-    {
-      "title": "Exercise more",
-      "progress": 50
-    },
-    {
-      "title": "Read a book",
-      "progress": 25
-    }
-  ]
+     "content": "I had an amazing day!",
+     "date": "2023-07-01",
+     "metadata": {
+       "location": "Home"
+     },
+     "goals": [
+       {
+         "title": "Exercise more",
+         "progress": 50
+       },
+       {
+         "title": "Read a book",
+         "progress": 25
+       }
+     ]
   }
 
 ### Delete a journal entry
@@ -132,7 +137,7 @@ The Personal Journal Assistant is a microservices-based application that helps u
 - Response Body:
   ```shell
   {
-  "message": "Entry deleted successfully"
+     "message": "Entry deleted successfully"
   }
 
 ### Filter Entries by Date Range
@@ -142,8 +147,27 @@ The Personal Journal Assistant is a microservices-based application that helps u
     start: The start date of the range (format: YYYY-MM-DD).
     end: The end date of the range (format: YYYY-MM-DD).
 
+### Prompt Tool
+- Endpoint: POST https://journai.vercel.app/prompt
+- Description: Generate random text based on prompt
+- Request Body:
+  ```shell
+  {
+    "prompt": "Write about the clouds in the sky."
+  }
+- Response Body:
+  ```shell
+  {
+    "generatedText": [
+        "Clouds in the sky are large, fluffy clouds that often resemble cotton balls. They can be found on sunny days and indicate fair weather or thunderstorm conditions depending upon their altitude and location within an area of low pressure system."
+    ]
+  }
 ## Usage
 
 1. Make requests to the API endpoints using a tool like Postman.
 2. Ensure to include the necessary request parameters and headers, such as the bearer token for authentication.
 3. Refer to the source code for more details on request payloads and response formats.
+
+## Deployed Link
+
+[https://journai.vercel.app/](https://journai.vercel.app/)
