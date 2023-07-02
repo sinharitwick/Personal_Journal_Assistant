@@ -18,6 +18,19 @@ app.use('/entry', journalController);
 app.use('/prompt', promptController);
 app.use('/api', userController);
 
+app.get('/', (req, res) => {
+    res.send(`<h2> Endpoints </h2>
+    <p><b>POST</b> /api/register</p>
+    <p><b>POST</b> /api/login</p>
+    <p><b>GET</b> /api/logout</p>
+    <p><b>POST</b> /entry</p>
+    <p><b>GET</b> /entry</p>
+    <p><b>GET</b> /entry?startDate=[YYYY-MM-DD]&endDate=[YYYY-MM-DD]</p>
+    <p><b>PUT</b> /entry/:id</p>
+    <p><b>DELETE</b> /entry/:id</p>
+    <p><b>POST</b> /prompt</p>`)
+  })
+
 connectToDatabase();
 
 export default app;

@@ -42,6 +42,7 @@ router.post('/', validateToken, async (req, res) => {
 
 router.get('/', validateToken, async (req,res) => {
     const userId = req.user.id;
+    const { startDate, endDate } = req.query;
     try {
         const user = await User.findById(userId);
 
@@ -49,9 +50,15 @@ router.get('/', validateToken, async (req,res) => {
             return res.status(404).json({ message: 'User not found!'});
         }
 
-        const entries = await Entry.find({ user: userId });
+        let query = { user: userId};
 
-        res.json({ entries});
+        if(startDate && endDate) {
+            query.date = { $gte: new Date(startDate), $lte: new Date(endDate) };
+        }
+
+        const entries = await Entry.find(query);
+
+        res.json({ entries });
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ message: 'Server error' });
