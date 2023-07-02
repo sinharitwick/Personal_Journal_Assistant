@@ -19,7 +19,8 @@ app.use('/prompt', promptController);
 app.use('/api', userController);
 
 app.get('/', (req, res) => {
-    res.send(`<h2> Endpoints </h2>
+    res.send(`<h2> Personal Journal Assistant </h2>
+    <p><b>ENDPOINTS:</b><p>
     <p><b>POST</b> /api/register</p>
     <p><b>POST</b> /api/login</p>
     <p><b>GET</b> /api/logout</p>
