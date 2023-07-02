@@ -5,6 +5,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Diya Karmakar, Harsh Chichad, Ritwick Sinha",
@@ -19,8 +22,6 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.3.1",
-    "node-fetch": "^3.3.1",
-    "openai": "^3.3.0",
     "transformers": "^3.1.0"
   },
   "devDependencies": {
